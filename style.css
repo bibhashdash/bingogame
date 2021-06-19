@@ -74,3 +74,31 @@ button {
 .marked {
     background-color: cyan;
 }
+
+@media all and (min-width: 480px) and (max-width: 768px) {
+    .bingo-card {
+        width: 90%;
+    }
+    .btns {
+        width: 60%;
+    }
+}
+
+@media all and (min-width: 769px) and (max-width: 1024px) {
+    .bingo-card {
+        width: 90%;
+    }
+    .btns {
+        width: 60%;
+    }
+}
+
+@media all and (max-width: 479px) {
+    .bingo-card {
+        width: 90%;
+        height: 30%;
+    }
+    .btns {
+        width: 90%;
+    }
+}
