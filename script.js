@@ -1,53 +1,85 @@
-// const btnExpandBox = document.querySelector(".btn-expand-box");
-// const bigGreyBox = document.querySelector(".big-grey-box");
-
-// btnExpandBox.addEventListener("click", function() {
-//     bigGreyBox.classList.toggle("expanded");
-// });
-
+const btnNewCard = document.querySelector(".btn-new-card");
 const btnStartGame = document.querySelector(".btn-start-game");
-const btnNextNumber = document.querySelector(".btn-next-number");
+const btnShoutLine = document.querySelector(".btn-shout-line");
 const bingoCardCell = document.querySelectorAll(".bingo-card-cell");
 const displayNextNumber = document.querySelector(".display-next-number");
-
-btnStartGame.addEventListener("click", function() {
-    let array1 = [];
-    let j = 0;
-
-    while (j < 15) {
-        let x = Math.floor(Math.random() * 90);
-        if (!array1.includes(x)) {
-            array1[j] = x;
-            j++;
-        } else {
-            x = Math.floor(Math.random() * 90);
+let array1 = [];
+let array2 = [];
+btnNewCard.addEventListener("click", function() {
+    while (array1.length < 15) {
+        let number = Math.floor(Math.random() * 90);
+        if (array1.indexOf(number) === -1) {
+            array1.push(number);
         }
     }
-
     for (let i = 0; i < bingoCardCell.length; i++) {
         bingoCardCell[i].textContent = String(array1[i]);
     }
-});
-
-let array2 = [];
-let k = 0;
-btnNextNumber.addEventListener("click", function() {
-    let y = Math.floor(Math.random() * 90);
-    if (!array2.includes(y)) {
-        displayNextNumber.textContent = String(y);
-        array2.push(y);
-        k++;
-    } else {
-        y = Math.floor(Math.random() * 90);
+    while (array2.length < 90) {
+        let number2 = Math.floor(Math.random() * 90);
+        if (array2.indexOf(number2) === -1) {
+            array2.push(number2);
+        }
     }
 });
+console.log(array2);
 
-bingoCardCell.forEach(function(item) {
-    item.addEventListener("click", function() {
-        if (array2.includes(Number(item.textContent))) {
-            item.classList.add("marked");
+btnStartGame.addEventListener("click", function() {
+    let k = 1;
+    let array3 = [];
+    setInterval(() => {
+        if (k === 90) {
+            alert("Game Over!");
         } else {
-            alert("No cheatin!");
+            k++;
+            displayNextNumber.textContent = array2[k - 1];
+            array3.push(Number(displayNextNumber.textContent));
+        }
+    }, 3000);
+    markTheNumber(array3);
+    shoutLine();
+});
+
+function markTheNumber(array3) {
+    bingoCardCell.forEach(function(item) {
+        item.addEventListener("click", function() {
+            if (array3.includes(Number(item.textContent))) {
+                item.classList.add("marked");
+            } else {
+                alert("No cheatin!");
+            }
+        });
+    });
+}
+
+function shoutLine() {
+    btnShoutLine.addEventListener("click", function() {
+        let tempCounter = 0;
+        for (l = 0; l <= 4; l++) {
+            if (bingoCardCell[l].classList.contains("marked")) {
+                tempCounter++;
+            }
+            if (tempCounter === 5) {
+                document.querySelector(".line-display").classList.remove("hidden");
+            }
+        }
+        tempCounter = 0;
+        for (l = 5; l <= 9; l++) {
+            if (bingoCardCell[l].classList.contains("marked")) {
+                tempCounter++;
+            }
+            if (tempCounter === 5) {
+                document.querySelector(".line-display").classList.remove("hidden");
+            }
+        }
+        tempCounter = 0;
+        for (l = 10; l <= 14; l++) {
+            if (bingoCardCell[l].classList.contains("marked")) {
+                tempCounter++;
+            }
+            if (tempCounter === 5) {
+                document.querySelector(".line-display").classList.remove("hidden");
+            }
         }
     });
-});
+}

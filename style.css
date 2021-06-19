@@ -2,6 +2,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.hidden {
+    display: none;
 }
 
 .container {
@@ -51,6 +57,18 @@ button {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+}
+
+.btns {
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.line-display {
+    position: absolute;
+    bottom: 90px;
 }
 
 .marked {
