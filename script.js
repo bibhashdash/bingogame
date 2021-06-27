@@ -65,26 +65,24 @@ btnStartGame.addEventListener("click", function() {
 
     // shout line function when player clicks the "line!!!" button
     shoutLine();
-    resetGameFunction();
+
     // const checkReset = resetGameFunction();
     // if (!checkReset) {
     //     clearInterval(playGame);
     // }
 });
 
-function resetGameFunction() {
-    btnResetGame.addEventListener("click", function() {
-        // for (let i = 0; i < bingoCardCell.length; i++) {
-        //     bingoCardCell[i].textContent = " ";
-        // }
-        // playerCardArray = [];
-        // displayNextNumber.textContent = " ";
-        // calloutArray = [];
-        // calloutCounter = 1;
-        // calloutnumbersbinArray = [];
-        location.reload();
-    });
-}
+btnResetGame.addEventListener("click", function() {
+    // for (let i = 0; i < bingoCardCell.length; i++) {
+    //     bingoCardCell[i].textContent = " ";
+    // }
+    // playerCardArray = [];
+    // displayNextNumber.textContent = " ";
+    // calloutArray = [];
+    // calloutCounter = 1;
+    // calloutnumbersbinArray = [];
+    location.reload();
+});
 
 // markTheNumber function places an event listener on each cell on the player's card.
 function markTheNumber(calloutnumbersbinArray) {
