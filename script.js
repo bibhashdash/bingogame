@@ -84,7 +84,6 @@ function resetGameFunction() {
         // calloutnumbersbinArray = [];
         location.reload();
     });
-    return false;
 }
 
 // markTheNumber function places an event listener on each cell on the player's card.
